@@ -95,7 +95,16 @@ button {
 #navbar {
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
   padding: 10px;
+  background-color: transparent;
+  z-index: 1;
+  transition: all var(--ani-duration-sec) ease-in;
+}
+
+#navbar.navbar-dark {
+  padding: 4px;
   background-color: #a3b9d1;
 }
 
@@ -117,7 +126,9 @@ button {
 }
 
 .navbar__menu__item {
-  padding: 8px 24px;
+  display: flex;
+  justify-content: center;
+  padding: 8px 12px;
   margin: 0 4px;
   border-radius: 5px;
 }
@@ -141,7 +152,7 @@ button {
 
 /* Home */
 #home {
-  padding: 48px;
+  padding: 100px;
   background: url(./imgs/home-background.png) center/cover no-repeat;
   text-align: center;
 }
@@ -174,12 +185,9 @@ button {
 /* About */
 .section {
   max-width: 1200px;
-  padding: 48px;
+  padding: 68px;
   text-align: center;
   margin: auto;
-}
-
-.section__container {
 }
 
 .about__majors {
@@ -351,6 +359,12 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 30px;
+  transition: all var(--ani-duration-sec) ease-in;
+}
+
+.work__projects.ani-out {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.98);
 }
 
 .project {
@@ -362,6 +376,10 @@ button {
   height: 250px;
   margin: 2px;
   background-color: var(--color-light-white);
+}
+
+.project.invisible {
+  display: none;
 }
 
 .project__img {
@@ -457,6 +475,26 @@ button {
   transform: scale(1.1);
 }
 
+.arrow-up {
+  position: fixed;
+  bottom: 45px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-dark-pink);
+  color: var(--color-white);
+  font-size: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--ani-duration-sec) ease-in;
+}
+
+.arrow-up.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 @media screen and (max-width: 768px) {
   #navbar {
     flex-direction: column;
@@ -466,7 +504,12 @@ button {
   .navbar__menu {
     display: none;
     flex-direction: column;
+    background-color: #a3b9d1;
     width: 100%;
+  }
+
+  .navbar__menu.open {
+    display: block;
   }
 
   .navbar__toggle-btn {
